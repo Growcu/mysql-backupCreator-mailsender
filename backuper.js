@@ -3,10 +3,11 @@ const { spawn } = require('child_process');
 const wstream = fs.createWriteStream('./Backup/DB_Backup');
 
 const makeBackUp = function() {
-        spawn('/opt/lampp/bin/mysqldump', [
+        spawn('mysqldump', [
+            '--single-transaction',
             '-u',
-            'root',
-            'instalacje'
+            process.env.DB_USER,
+            process.env.DB_NAME,
         ])
         .stdout
         .pipe(wstream)
