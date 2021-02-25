@@ -4,8 +4,9 @@ const { sendBackup } = require('./backupSender');
 
 function main() {
     makeBackUp();
-    sendBackup();
+    sendBackup().catch(console.error);
 }
+main();
 
 
 
